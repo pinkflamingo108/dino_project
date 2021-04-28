@@ -1,11 +1,3 @@
-// Submit Values
-// All the data will go to this array
-
-const arrayOfDino = [];
-
-//This prints what is in the array
-console.log(arrayOfDino);
-
 // Create Dino Objects
 
 fetch("dino.json")
@@ -79,3 +71,10 @@ submitBtn.addEventListener("click", () => {
 });
 
 // On button click, prepare and display infographic
+
+// Submit Values
+// All the data will go to this array
+const arrayOfDino = [];
+
+//This prints what is in the array
+console.log(arrayOfDino);
