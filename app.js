@@ -31,6 +31,8 @@ function Dino(species, weight, height, diet, where, when, fact) {
  this.fact = fact;
 }
 
+//Global human constructor
+
 let human = new Human();
 
 // Create Dino Compare Method 1
@@ -86,7 +88,7 @@ Dino.prototype.testCase = function () {
 
 // Create Human Object
 
-function Human(name, feet, inches, weight, diet) {
+function Human() {
  this.name = document.getElementById("name").value;
  this.feet = document.getElementById("feet").value;
  this.inches = document.getElementById("inches").value;
