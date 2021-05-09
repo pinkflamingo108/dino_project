@@ -1,5 +1,6 @@
 const arrayOfDino = [];
 const arrayOfHuman = [];
+
 console.log(arrayOfDino);
 console.log(arrayOfHuman);
 
@@ -31,29 +32,27 @@ function Dino(species, weight, height, diet, where, when, fact) {
  this.fact = fact;
 }
 
-//Global human constructor
-
-let human = new Human();
-
 // Create Dino Compare Method 1
 
 Dino.prototype.dinoHeight = function () {
- let dinoH = parseInt(this.height);
+ let human = new Human();
  let humanInch = parseInt(human["inches"]);
  let humanFeet = parseInt(human["feet"] * 12);
  let humanTotal = humanInch + humanFeet;
- //  if (dinoH > humanTotal) {
- //   return `Dino is taller by ${dinoH - humanTotal} inches`;
- //  } else if (dinoH < humanW) {
- //   return `The human is bigger by ${humanTotal - dinoH}`;
- //  } else {
- //   return ` Oh my god! Both of you weight the same!`;
- //  }
+ let dinoH = parseInt(this.height);
+ if (dinoH > humanTotal) {
+  return `Dino is taller by ${dinoH - humanTotal} inches`;
+ } else if (dinoH < humanW) {
+  return `The human is bigger by ${humanTotal - dinoH}`;
+ } else {
+  return ` Oh my god! Both of you weight the same!`;
+ }
 };
 
 // Create Dino Compare Method 2
 
 Dino.prototype.dinoWeight = function () {
+ let human = new Human();
  let humanW = parseInt(human["weight"]);
  let dinoW = parseInt(this.weight);
 
@@ -69,6 +68,7 @@ Dino.prototype.dinoWeight = function () {
 // Create Dino Compare Method 3
 
 Dino.prototype.dinoDiet = function () {
+ let human = new Human();
  let humanD = human["diet"];
  let dinoD = this.diet;
 
@@ -118,8 +118,11 @@ submitBtn.addEventListener("click", () => {
  // Use IIFE to get human data from form
  (function name() {
   let human = new Human();
-
+  human.humanTesting();
   arrayOfHuman.push(human);
+  arrayOfDino.forEach((e) => {
+   console.log(e);
+  });
  })();
 });
 
