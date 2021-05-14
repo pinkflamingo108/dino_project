@@ -159,7 +159,8 @@ submitBtn.addEventListener("click", () => {
 
   arrayOfHuman.push(human);
   arrayOfDino.forEach((arrayInfo) => {
-// Calling the UI and data
+   //Here im trying to call it without properties
+   //    console.log(`${arrayInfo.species} fact:`, arrayInfo.randomFact());
    return arrayInfo.generateUI();
   });
  })();
