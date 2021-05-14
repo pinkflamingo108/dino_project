@@ -60,7 +60,7 @@ Dino.prototype.dinoWeight = function () {
   return `The Dinosaur is heavier by ${dinoW - humanW}`;
  } else if (humanW > dinoW) {
   return `Incredible! The human is ${humanW - dinoW} lbs than the Dino`;
- } else {
+ } else if (humanW === dinoW) {
   return `Both weight the same amount`;
  }
 };
@@ -75,13 +75,9 @@ Dino.prototype.dinoDiet = function () {
  let dinoDL = this.diet.toLowerCase();
 
  if (humanDL == dinoDL) {
-  console.log(
-   `Both the dinosaur and the human have the same diet! They both eat ${humanDL}`
-  );
+  return `Both the dinosaur and the human have the same diet! They both eat ${humanDL}`;
  } else if (humanDL != dinoDL) {
-  console.log(
-   `They eat different food. The human eats ${humanDL} and the Dino eats ${dinoDL}`
-  );
+  return `They eat different food. The human eats ${humanDL} and the Dino eats ${dinoDL}`;
  }
 };
 
@@ -91,15 +87,46 @@ Dino.prototype.facts = function () {
  return `${this.fact}`;
 };
 
+// Create Dino Compare Method 5
+
+Dino.prototype.location = function () {
+ return `This dino comes from ${this.where}`;
+};
+
+// Create Dino Compare Method 6
+
+Dino.prototype.time = function () {
+ return `Existed in ${this.when}`;
+};
+
+// Create Dino Compare Method 7
+
 Dino.prototype.randomFact = function () {
  let arrayM = [
-  this.fact(),
+  this.location(),
+  this.time(),
   this.dinoDiet(),
   this.dinoWeight(),
   this.dinoHeight(),
+  this.facts(),
  ];
  let math = parseInt(Math.random() * arrayM.length);
- console.log(arrayM[math]);
+ return arrayM[math];
+};
+
+// Creating Tiles
+
+Dino.prototype.generateUI = function () {
+ const grid = document.getElementById("grid");
+ const divT = document.createElement("div");
+ divT.classList.add("grid-items");
+ divT.innerHTML = `
+    <img src='images/${this.species}.png' >
+    <h3>${this.species}</h3>
+    <p>${this.randomFact()}</p>
+
+    `;
+ grid.append(divT);
 };
 
 // Create Human Object
@@ -119,6 +146,9 @@ function Human() {
 
 const submitBtn = document.getElementById("btn");
 const form = document.getElementById("dino-compare");
+const testing = [];
+
+// console.log(testing);
 
 submitBtn.addEventListener("click", () => {
  form.style.display = "none";
@@ -129,8 +159,8 @@ submitBtn.addEventListener("click", () => {
 
   arrayOfHuman.push(human);
   arrayOfDino.forEach((arrayInfo) => {
-   //Here im trying to call it without properties
-   console.log(arrayInfo.randomFact());
+// Calling the UI and data
+   return arrayInfo.generateUI();
   });
  })();
 });
