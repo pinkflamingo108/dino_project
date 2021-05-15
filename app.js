@@ -119,13 +119,17 @@ Dino.prototype.randomFact = function () {
 Dino.prototype.generateUI = function () {
  const grid = document.getElementById("grid");
  const divT = document.createElement("div");
- divT.classList.add("grid-items");
+ divT.classList.add("grid-item");
+ const gridTiles = Array.from(document.getElementsByClassName("grid-item"));
+ arrayOfDino.push(this.name, this.picture);
  divT.innerHTML = `
-    <img src='images/${this.species}.png' >
-    <h3>${this.species}</h3>
+   <h3>${this.species}</h3>
+  <img class='center' src='images/${this.species}.png' >
+  
     <p>${this.randomFact()}</p>
-
+   
     `;
+
  grid.append(divT);
 };
 
@@ -139,18 +143,13 @@ function Human() {
  this.diet = document.getElementById("diet").value;
 }
 
-// Add tiles to DOM
-
-// Remove form from screen
-// Submit Button
-
 const submitBtn = document.getElementById("btn");
 const form = document.getElementById("dino-compare");
-const testing = [];
 
-// console.log(testing);
+// Submit Button
 
 submitBtn.addEventListener("click", () => {
+ // Remove form from screen
  form.style.display = "none";
 
  // Use IIFE to get human data from form
@@ -159,14 +158,7 @@ submitBtn.addEventListener("click", () => {
 
   arrayOfHuman.push(human);
   arrayOfDino.forEach((arrayInfo) => {
-   //Here im trying to call it without properties
-   //    console.log(`${arrayInfo.species} fact:`, arrayInfo.randomFact());
    return arrayInfo.generateUI();
   });
  })();
 });
-
-// On button click, prepare and display infographic
-
-// Submit Values
-// All the data will go to this array
