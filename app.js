@@ -44,6 +44,8 @@ Dino.prototype.dinoHeight = function () {
   return `Dino is taller by ${dinoH - humanTotal} inches`;
  } else if (dinoH < humanTotal) {
   return `The human is bigger by ${humanTotal - dinoH}`;
+ } else if (this.species === "Pigeon") {
+  return `Birds are dinosaurs`;
  } else {
   return ` Oh my god! Both of you weight the same!`;
  }
@@ -62,6 +64,8 @@ Dino.prototype.dinoWeight = function () {
   return `Incredible! The human is ${humanW - dinoW} lbs than the Dino`;
  } else if (humanW === dinoW) {
   return `Both weight the same amount`;
+ } else if (this.species === "Pigeon") {
+  return `Birds are dinosaurs`;
  }
 };
 
@@ -78,6 +82,8 @@ Dino.prototype.dinoDiet = function () {
   return `Both the dinosaur and the human have the same diet! They both eat ${humanDL}`;
  } else if (humanDL != dinoDL) {
   return `They eat different food. The human eats ${humanDL} and the Dino eats ${dinoDL}`;
+ } else if (this.species === "Pigeon") {
+  return `Birds are dinosaurs`;
  }
 };
 
@@ -114,24 +120,41 @@ Dino.prototype.randomFact = function () {
  return arrayM[math];
 };
 
-// Creating Tiles
+// Creating Tiles. This will create most of the tiles on the forEach set on the click event
 
 Dino.prototype.generateUI = function () {
  const grid = document.getElementById("grid");
  const divT = document.createElement("div");
  divT.classList.add("grid-item");
  const gridTiles = Array.from(document.getElementsByClassName("grid-item"));
- arrayOfDino.push(this.name, this.picture);
+
  divT.innerHTML = `
-   <h3>${this.species}</h3>
-  <img class='center' src='images/${this.species}.png' >
-  
-    <p>${this.randomFact()}</p>
-   
-    `;
+     <h3>${this.species}</h3>
+    <img class='center' src='images/${this.species}.png' >
+    
+      <p>${this.randomFact()}</p>
+      `;
 
  grid.append(divT);
 };
+
+// This is creating the last Tile with Human
+
+function humanDiv() {
+ const grid = document.getElementById("grid");
+ const divT = document.createElement("div");
+ const human = new Human();
+ divT.classList.add("grid-item");
+
+ divT.innerHTML = `
+ <h3>${human.name}</h3>
+<img class='center' src='images/human.png' >
+  <p>Just a random human</p>
+ 
+  `;
+
+ grid.append(divT);
+}
 
 // Create Human Object
 
@@ -160,5 +183,7 @@ submitBtn.addEventListener("click", () => {
   arrayOfDino.forEach((arrayInfo) => {
    return arrayInfo.generateUI();
   });
+  //This calls the function that will return a human tile
+  humanDiv();
  })();
 });
