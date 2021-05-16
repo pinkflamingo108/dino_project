@@ -124,16 +124,17 @@ Dino.prototype.randomFact = function () {
 
 Dino.prototype.generateUI = function () {
  const grid = document.getElementById("grid");
+ const human = new Human();
  const divT = document.createElement("div");
  divT.classList.add("grid-item");
  const gridTiles = Array.from(document.getElementsByClassName("grid-item"));
 
  divT.innerHTML = `
-     <h3>${this.species}</h3>
-    <img class='center' src='images/${this.species}.png' >
-    
-      <p>${this.randomFact()}</p>
-      `;
+      <h3>${this.species}</h3>
+     <img class='center' src='images/${this.species}.png' >
+     
+       <p>${this.randomFact()}</p>
+       `;
 
  grid.append(divT);
 };
@@ -143,15 +144,26 @@ Dino.prototype.generateUI = function () {
 function humanDiv() {
  const grid = document.getElementById("grid");
  const divT = document.createElement("div");
+ const gridTiles = Array.from(document.getElementsByClassName("grid-item"));
+ const dino = new Dino();
  const human = new Human();
  divT.classList.add("grid-item");
 
+ //  gridTiles[8].innerHTML = gridTiles[4].innerHTML;
+
  divT.innerHTML = `
- <h3>${human.name}</h3>
-<img class='center' src='images/human.png' >
-  <p>Just a random human</p>
- 
-  `;
+   <h3>${human.name}</h3>
+  <img class='center' src='images/human.png' >
+    <p>Just a random human</p>
+
+    `;
+
+ //  gridTiles[4].innerHTML = `
+ //      <h3>${human.name}</h3>
+ //     <img class='center' src='images/human.png' >
+ //       <p>Just a random human</p>
+
+ //       `;
 
  grid.append(divT);
 }
@@ -183,7 +195,17 @@ submitBtn.addEventListener("click", () => {
   arrayOfDino.forEach((arrayInfo) => {
    return arrayInfo.generateUI();
   });
-  //This calls the function that will return a human tile
+  //   //This calls the function that will return a human tile
   humanDiv();
+
+  // This switches the last tile for the forth tile and so on
+  const gridTiles = Array.from(document.getElementsByClassName("grid-item"));
+  const humans = new Human();
+  gridTiles[8].innerHTML = gridTiles[4].innerHTML;
+  gridTiles[4].innerHTML = `
+  <h3>${humans.name}</h3>
+ <img class='center' src='images/human.png' >
+    <p>Just a random human</p>
+`;
  })();
 });
