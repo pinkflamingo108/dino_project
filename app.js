@@ -1,9 +1,6 @@
 const arrayOfDino = [];
 const arrayOfHuman = [];
 
-console.log(arrayOfDino);
-console.log(arrayOfHuman);
-
 // // Create Dino Objects
 
 fetch("dino.json")
@@ -134,9 +131,8 @@ Dino.prototype.randomFact = function () {
 // Creating Tiles. This will create most of the tiles on the forEach set on the click event
 
 Dino.prototype.generateUI = function () {
+ // https://knowledge.udacity.com/questions/562655 helped me to get an idea of how to build tiles
 
-  // https://knowledge.udacity.com/questions/562655 helped me to get an idea of how to build tiles
-  
  const grid = document.getElementById("grid");
  const human = new Human();
  const divT = document.createElement("div");
