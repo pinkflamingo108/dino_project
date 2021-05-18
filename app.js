@@ -40,12 +40,12 @@ Dino.prototype.dinoHeight = function () {
  let humanFeet = parseInt(human["feet"] * 12);
  let humanTotal = humanInch + humanFeet;
  let dinoH = parseInt(this.height);
- if (dinoH > humanTotal) {
+ if (this.species === "Pigeon") {
+  return `All birds are Dinosaurs`;
+ } else if (dinoH > humanTotal) {
   return `Dino is taller by ${dinoH - humanTotal} inches`;
  } else if (dinoH < humanTotal) {
   return `The human is bigger by ${humanTotal - dinoH}`;
- } else if (this.species === "Pigeon") {
-  return `Birds are dinosaurs`;
  } else {
   return ` Oh my god! Both of you weight the same!`;
  }
@@ -58,14 +58,14 @@ Dino.prototype.dinoWeight = function () {
  let humanW = parseInt(human["weight"]);
  let dinoW = parseInt(this.weight);
 
- if (dinoW > humanW) {
+ if (this.species === "Pigeon") {
+  return `All birds are Dinosaurs`;
+ } else if (dinoW > humanW) {
   return `The Dinosaur is heavier by ${dinoW - humanW}`;
  } else if (humanW > dinoW) {
   return `Incredible! The human is ${humanW - dinoW} lbs than the Dino`;
  } else if (humanW === dinoW) {
   return `Both weight the same amount`;
- } else if (this.species === "Pigeon") {
-  return `Birds are dinosaurs`;
  }
 };
 
@@ -77,32 +77,43 @@ Dino.prototype.dinoDiet = function () {
  let humanDL = humanD.toLowerCase();
  let dinoD = this.diet;
  let dinoDL = this.diet.toLowerCase();
-
- if (humanDL == dinoDL) {
+ if (this.species === "Pigeon") {
+  return `All birds are Dinosaurs`;
+ } else if (humanDL == dinoDL) {
   return `Both the dinosaur and the human have the same diet! They both eat ${humanDL}`;
  } else if (humanDL != dinoDL) {
   return `They eat different food. The human eats ${humanDL} and the Dino eats ${dinoDL}`;
- } else if (this.species === "Pigeon") {
-  return `Birds are dinosaurs`;
  }
 };
 
 // Create Dino Compare Method 4
 
 Dino.prototype.facts = function () {
- return `${this.fact}`;
+ if (this.species === "Pigeon") {
+  return `All birds are Dinosaurs`;
+ } else {
+  return `${this.fact}`;
+ }
 };
 
 // Create Dino Compare Method 5
 
 Dino.prototype.location = function () {
- return `This dino comes from ${this.where}`;
+ if (this.species === "Pigeon") {
+  return `All birds are Dinosaurs`;
+ } else {
+  return `This dino comes from ${this.where}`;
+ }
 };
 
 // Create Dino Compare Method 6
 
 Dino.prototype.time = function () {
- return `Existed in ${this.when}`;
+ if (this.species === "Pigeon") {
+  return `All birds are Dinosaurs`;
+ } else {
+  return `Existed in ${this.when}`;
+ }
 };
 
 // Create Dino Compare Method 7
@@ -149,21 +160,12 @@ function humanDiv() {
  const human = new Human();
  divT.classList.add("grid-item");
 
- //  gridTiles[8].innerHTML = gridTiles[4].innerHTML;
-
  divT.innerHTML = `
    <h3>${human.name}</h3>
   <img class='center' src='images/human.png' >
     <p>Just a random human</p>
 
     `;
-
- //  gridTiles[4].innerHTML = `
- //      <h3>${human.name}</h3>
- //     <img class='center' src='images/human.png' >
- //       <p>Just a random human</p>
-
- //       `;
 
  grid.append(divT);
 }
